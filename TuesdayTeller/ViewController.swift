@@ -34,7 +34,8 @@ class ViewController: UIViewController {
     }
     
     func updateUI() {
-        let nextTuesday = getNextTuesday();
+        let today = Date();
+        let nextTuesday = getNextTuesday(today);
         let tuesdayNumber = getTuesdayNumber(nextTuesday);
         let parkMessage = getParkSide(tuesdayNumber);
         dateLabel.text = getDateString(nextTuesday);
@@ -43,14 +44,13 @@ class ViewController: UIViewController {
     }
     
     // (Intentionally) Returns today if it is a Tuesday
-    func getNextTuesday() -> Date{
-        let currentDay = Date();
-        let dayOfWeek = getDayOfWeek(currentDay);
+    func getNextTuesday(_ startDate: Date) -> Date{
+        let dayOfWeek = getDayOfWeek(startDate);
         
         let diff = dayOfWeek - 3;
         let delta = diff < 0 ? diff * -1 : 7 - diff;
         
-        return addDays(currentDay, number: delta);
+        return addDays(startDate, number: delta);
     }
     
     func addDays(_ date: Date, number: Int) -> Date {
@@ -71,8 +71,7 @@ class ViewController: UIViewController {
         return dateFormatter.string(from: date);
     }
     
-    // There is probably a better way to do this.
-    // #CyclesAreCheap
+    // There is probably a better way to do this.  Whatever, it's 5 iterations max.
     func getTuesdayNumber(_ tuesdayDate: Date) -> Int {
         var tuesdayCount = 1;
         var testDate = addDays(tuesdayDate, number: -7);
@@ -94,7 +93,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
