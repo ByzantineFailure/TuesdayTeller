@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     static let PARK_NEAR_HOUSE = "Park on the house side of the street";
     static let PARK_FAR_SIDE = "Park on the far side of the street";
+    static let PARK_WHEREVER = "Park wherever.  Maybe the woods?";
     
     //MARK: Properties
     @IBOutlet weak var tuesdayNumberLabel: UILabel!
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
         return dateFormatter.string(from: date);
     }
     
-    // There is probably a better way to do this.  Whatever, it's 5 iterations max.
+    // There is probably a better way to do this.  Whatever, it's 4 iterations max.
     func getTuesdayNumber(_ tuesdayDate: Date) -> Int {
         var tuesdayCount = 1;
         var testDate = addDays(tuesdayDate, number: -7);
@@ -86,6 +87,9 @@ class ViewController: UIViewController {
     }
     
     func getParkSide(_ tuesdayNumber: Int) -> String {
+        if (tuesdayNumber == 5) {
+            return ViewController.PARK_WHEREVER;
+        }
         return tuesdayNumber % 2 == 1 ? ViewController.PARK_NEAR_HOUSE : ViewController.PARK_FAR_SIDE;
     }
     
