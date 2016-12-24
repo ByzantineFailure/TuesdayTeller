@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         let dayOfWeek = getDayOfWeek(startDate);
         
         let diff = dayOfWeek - 3;
-        let delta = diff < 0 ? diff * -1 : 7 - diff;
+        let delta = diff <= 0 ? diff * -1 : 7 - diff;
         
         return addDays(startDate, number: delta);
     }

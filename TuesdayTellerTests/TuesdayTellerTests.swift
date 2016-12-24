@@ -32,7 +32,7 @@ class TuesdayTellerTests: XCTestCase {
         let expectedResult = dateFormat.date(from: "2016-12-27")!;
         let sunday = dateFormat.date(from: "2016-12-25")!;
         let monday = dateFormat.date(from: "2016-12-26")!;
-        let tuesday = dateFormat.date(from: "2016-12-20")!;
+        let tuesday = dateFormat.date(from: "2016-12-27")!;
         let wednesday = dateFormat.date(from: "2016-12-21")!;
         let thursday = dateFormat.date(from: "2016-12-22")!;
         let friday = dateFormat.date(from: "2016-12-23")!;
